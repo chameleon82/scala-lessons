@@ -30,7 +30,7 @@
   def doSomething[T <: Any : Union[Long, String]#Check](t: T) = {}
 
   doSomething(1L)
-  doSomething("wer")
+  doSomething("string text")
   doSomething(1) // contravariant can't prove Int. will not compile
 
 ```
