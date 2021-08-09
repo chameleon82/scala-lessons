@@ -20,6 +20,23 @@
 
 ## Limit parameter types
 
+### With implicits
+```
+  sealed trait LimitedType[T]
+  object LimitedType {
+    implicit object LimitedInt extends LimitedType[String]
+    implicit object LimitedLong extends LimitedType[Long]
+  }
+
+  def doSomething[T : LimitedType](t: T) = {}
+  
+  doSomething(1L)
+  doSomething("string text")
+  doSomething(1) // will not compile as there is no implicit wrapper
+```
+
+### With Contravariance
+
 ```
   trait Contra[-X]
 
