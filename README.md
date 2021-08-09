@@ -27,7 +27,7 @@
     type Check[T] = Contra[Contra[T]] <:< Contra[Contra[A] with Contra[B]]
   }
 
-  def doSomething[T <: Any : Union[Long, String]#Check](t: T) = {}
+  def doSomething[T : Union[Long, String]#Check](t: T) = {}
 
   doSomething(1L)
   doSomething("string text")
