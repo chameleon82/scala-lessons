@@ -3,14 +3,14 @@
 
 ## NonEmptyList implementation
 ```
-  class NonEmptyList(head: Int, tail: Seq[Int]) extends Iterable[Int] {
-    private val underlying: List[Int] = List(head) ++ tail
-    override def iterator: Iterator[Int] = underlying.iterator
+  class NonEmptyList[T](head: T, tail: Seq[T]) extends Iterable[T] {
+    private val underlying: List[T] = List(head) ++ tail
+    override def iterator: Iterator[T] = underlying.iterator
   }
 
   object NonEmptyList {
-    def apply(head: Int) = new NonEmptyList(head, Nil)
-    def apply(head: Int, tail: Int *): NonEmptyList = new NonEmptyList(head, tail)
+    def apply[T](head: T) = new NonEmptyList(head, Nil)
+    def apply[T](head: T, tail: T *): NonEmptyList = new NonEmptyList(head, tail)
   }
 
   for (x <- NonEmptyList(1)) {
